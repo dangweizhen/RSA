@@ -431,4 +431,19 @@ string toDec(string s)
 		res = addition(mult(res,"16"), tostring(s[i]));
 	return res;
 }
+// return b/2
+bigInt half(bigInt b)
+{
+	if(b < bigInt("2")) return bigInt("0");
+	string n = b.getnum();
+	int l = n.length();
+	int remain = 0;
+	for(int i = 0;i < l;i ++)
+	{
+		char c = n[i];
+		n[i] = (remain * 10 + c-'0') / 2 + '0';
+		remain = (remain * 10 + c-'0') % 2;
+	}
+	return bigInt(n[0] == '0' ? n.substr(1):n);
+}
 

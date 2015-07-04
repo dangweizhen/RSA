@@ -29,5 +29,6 @@ public:
 
 std::string toHex(std::string);
 std::string toDec(std::string);
+bigInt half(bigInt b);
 
 #endif
