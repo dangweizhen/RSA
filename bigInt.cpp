@@ -294,24 +294,24 @@ bool div(string num, string s, string& q, string& r)
 	return true;
 }
 
-bigInt bigInt::operator * (const bigInt &b)
+bigInt bigInt::operator * (const bigInt &b) const
 {
 	return bigInt(mult(num, b.getnum()));
 }
 
-bigInt bigInt::operator + (const bigInt &b)
+bigInt bigInt::operator + (const bigInt &b) const
 {
 	return bigInt(addition(num, b.getnum()));
 }
 
-bigInt bigInt::operator - (const bigInt &b)
+bigInt bigInt::operator - (const bigInt &b) const
 {
 	string s = substract(num, b.getnum());
 	if(s == "-1") return bigInt("0");	
 	return bigInt(s);
 }
 
-bigInt bigInt::operator / (const bigInt &b)
+bigInt bigInt::operator / (const bigInt &b) const
 {
 	string q,r;
 	if(div(num, b.getnum(), q, r))
@@ -320,7 +320,7 @@ bigInt bigInt::operator / (const bigInt &b)
 		return bigInt("0");
 }
 
-bigInt bigInt::operator % (const bigInt &b)
+bigInt bigInt::operator % (const bigInt &b) const
 {
 	string q,r;
 	if(div(num, b.getnum(), q, r))
@@ -329,30 +329,30 @@ bigInt bigInt::operator % (const bigInt &b)
 		return bigInt("0");
 }
 
-bool bigInt::operator == (const bigInt &b)
+bool bigInt::operator == (const bigInt &b) const
 {
 	return num == b.getnum();
 }
 
-bool bigInt::operator > (const bigInt &b)
+bool bigInt::operator > (const bigInt &b) const
 {
 	string s = b.getnum();
 	return((num.length() > s.length()) || (num.length() == s.length() && num > s));
 }
 
-bool bigInt::operator < (const bigInt &b)
+bool bigInt::operator < (const bigInt &b) const
 {
 	string s = b.getnum();
 	return((num.length() < s.length()) || (num.length() == s.length() && num < s));
 }
 
-bool bigInt::operator >= (const bigInt &b)
+bool bigInt::operator >= (const bigInt &b) const
 {
 	string s = b.getnum();
 	return((num.length() > s.length()) || (num.length() == s.length() && num >= s));
 }
 
-bool bigInt::operator <= (const bigInt &b)
+bool bigInt::operator <= (const bigInt &b) const
 {
 	string s = b.getnum();
 	return((num.length() < s.length()) || (num.length() == s.length() && num <= s));
@@ -372,6 +372,14 @@ istream& operator >> (istream& i, bigInt& f)
 	else
 		f.num = "0";
 	return i;
+}
+
+bigInt& bigInt::operator = (const bigInt &b) {
+    this->num = b.num;
+    return *this;
+}
+bigInt::bigInt(const bigInt &b) {
+    this->num = b.num;
 }
 
 char tochar(string s)
