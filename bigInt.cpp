@@ -314,8 +314,8 @@ bigInt bigInt::operator - (const bigInt &b)
 bigInt bigInt::operator / (const bigInt &b)
 {
 	string q,r;
-	if(div(num, b.getnum(), q, r)){cout << q << endl;
-		return bigInt(q);}
+	if(div(num, b.getnum(), q, r))
+		return bigInt(q);
 	else
 		return bigInt("0");
 }
