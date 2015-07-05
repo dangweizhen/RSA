@@ -1,3 +1,5 @@
+#ifndef RANDOM_H
+#define RANDOM_H
 #include "bigInt.h"
 #include "power.h"
 #include <ctime>
@@ -22,3 +24,4 @@ bigInt random(int len) {
     else
         return res;
 }
+#endif
