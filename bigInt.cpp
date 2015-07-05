@@ -286,8 +286,8 @@ bool div(string num, string s, string& q, string& r)
 		{
 			quotient[i] += 1;
 			last = stmp;
-			if(last == "0") last = "";
 		}
+        if(last == "0") last = "";
 	}
 	q = (quotient[0] == '0' ? quotient.substr(1) : quotient);
 	r = (last == "" ? "0":last);
