@@ -286,41 +286,41 @@ bool div(string num, string s, string& q, string& r)
 		{
 			quotient[i] += 1;
 			last = stmp;
-			if(last == "0") last = "";
 		}
+		if(last == "0") last = "";
 	}
 	q = (quotient[0] == '0' ? quotient.substr(1) : quotient);
 	r = (last == "" ? "0":last);
 	return true;
 }
 
-bigInt bigInt::operator * (const bigInt &b) const
+bigInt bigInt::operator * (const bigInt &b)
 {
 	return bigInt(mult(num, b.getnum()));
 }
 
-bigInt bigInt::operator + (const bigInt &b) const
+bigInt bigInt::operator + (const bigInt &b)
 {
 	return bigInt(addition(num, b.getnum()));
 }
 
-bigInt bigInt::operator - (const bigInt &b) const
+bigInt bigInt::operator - (const bigInt &b)
 {
 	string s = substract(num, b.getnum());
 	if(s == "-1") return bigInt("0");	
 	return bigInt(s);
 }
 
-bigInt bigInt::operator / (const bigInt &b) const
+bigInt bigInt::operator / (const bigInt &b)
 {
 	string q,r;
-	if(div(num, b.getnum(), q, r))
-		return bigInt(q);
+	if(div(num, b.getnum(), q, r)){cout << q << endl;
+		return bigInt(q);}
 	else
 		return bigInt("0");
 }
 
-bigInt bigInt::operator % (const bigInt &b) const
+bigInt bigInt::operator % (const bigInt &b)
 {
 	string q,r;
 	if(div(num, b.getnum(), q, r))
@@ -329,30 +329,30 @@ bigInt bigInt::operator % (const bigInt &b) const
 		return bigInt("0");
 }
 
-bool bigInt::operator == (const bigInt &b) const
+bool bigInt::operator == (const bigInt &b)
 {
 	return num == b.getnum();
 }
 
-bool bigInt::operator > (const bigInt &b) const
+bool bigInt::operator > (const bigInt &b)
 {
 	string s = b.getnum();
 	return((num.length() > s.length()) || (num.length() == s.length() && num > s));
 }
 
-bool bigInt::operator < (const bigInt &b) const
+bool bigInt::operator < (const bigInt &b)
 {
 	string s = b.getnum();
 	return((num.length() < s.length()) || (num.length() == s.length() && num < s));
 }
 
-bool bigInt::operator >= (const bigInt &b) const
+bool bigInt::operator >= (const bigInt &b)
 {
 	string s = b.getnum();
 	return((num.length() > s.length()) || (num.length() == s.length() && num >= s));
 }
 
-bool bigInt::operator <= (const bigInt &b) const
+bool bigInt::operator <= (const bigInt &b)
 {
 	string s = b.getnum();
 	return((num.length() < s.length()) || (num.length() == s.length() && num <= s));
@@ -372,14 +372,6 @@ istream& operator >> (istream& i, bigInt& f)
 	else
 		f.num = "0";
 	return i;
-}
-
-bigInt& bigInt::operator = (const bigInt &b) {
-    this->num = b.num;
-    return *this;
-}
-bigInt::bigInt(const bigInt &b) {
-    this->num = b.num;
 }
 
 char tochar(string s)
